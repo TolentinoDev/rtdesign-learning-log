@@ -81,13 +81,13 @@ def edit_entry(request, entry_id):
     if topic.owner != request.user:
         raise Http404
 
-    if request.method != 'Post':
+    if request.method != 'POST':
         #Initial request;pre-fill form with the current entry.
         form = EntryForm(instance=entry)
 
     else:
         # Post data submitted;process data.
-        form = EntryForm(instance=Entry,data=request.POST)
+        form = EntryForm(instance=entry,data=request.POST)
         if form.is_valid():
             form.save()
             return HTTPResponseRedirect(reverse('learning_logs:topic',
