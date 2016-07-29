@@ -92,7 +92,7 @@ def edit_entry(request, entry_id):
             form.save()
             return HTTPResponseRedirect(reverse('learning_logs:topic',
                                                 args=[topic.id]))
-    content = {'entry':entry,'topic':topic,'form':form}
+    context = {'entry':entry,'topic':topic,'form':form}
     return render(request,'learning_logs/edit_entry.html',context)
 
     
